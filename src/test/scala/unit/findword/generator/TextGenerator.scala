@@ -46,6 +46,18 @@ object TextGenerator {
   }
 
   /**
+   * Simplified text generator. Used for more complex generation logic to avoid overhead.
+   *
+   */
+  def simplifiedWithWordText(word: String) = Gen.listOfN(5, Gen.alphaStr).map(_.mkString(s" ${word} "))
+
+  /**
+   * Simplified text generator. Used for more complex generation logic to avoid overhead.
+   *
+   */
+  def simplifiedWithoutWordText(word: String) = Gen.listOfN(5, Gen.alphaStr.suchThat(w => w != word)).map(_.mkString(" "))
+
+  /**
    * Build a generator which produces text from the given word generator and which satisfies the given filter.
    *
    * @param wordGen Words generator.
