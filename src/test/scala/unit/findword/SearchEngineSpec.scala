@@ -3,7 +3,7 @@ package unit.findword
 import findword.SearchEngine
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import unit.findword.generator.{Source, SourceGenerator, TextGenerator}
+import generator.{Source, SourceGenerator, TextGenerator}
 
 import scala.util.Random
 

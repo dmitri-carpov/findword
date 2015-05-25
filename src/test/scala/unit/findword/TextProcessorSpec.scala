@@ -4,7 +4,7 @@ import findword.TextProcessor
 import org.scalacheck.Gen
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{Matchers, WordSpec}
-import unit.findword.generator.TextGenerator
+import generator.TextGenerator
 
 /**
  * @author Dmitri Carpov
@@ -30,8 +30,8 @@ class TextProcessorSpec extends WordSpec with GeneratorDrivenPropertyChecks with
       }
     }
 
-    "the searched word occurs one or more time in the text" must {
-      "return true for random text and word" in {
+    "the searched word occurs one or more times in the text" must {
+      "return true (generated data)" in {
         val gen = for {
           word <- TextGenerator.word
           text <- TextGenerator.textWithWord(word)
@@ -43,7 +43,7 @@ class TextProcessorSpec extends WordSpec with GeneratorDrivenPropertyChecks with
         }
       }
 
-      "return true for static text and word" in {
+      "return true (static data)" in {
         val text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n" +
           "Cras rhoncus, magna et hendrerit blandit, diam arcu rhoncus felis, eget molestie ipsum ligula sed \n" +
           "tortor. Mauris sodales metus eu enim imperdiet posuere."
@@ -53,7 +53,7 @@ class TextProcessorSpec extends WordSpec with GeneratorDrivenPropertyChecks with
     }
 
     "the searched word does not occur in the text" must {
-      "return false for random text and word" in {
+      "return false (generated data)" in {
         val gen = for {
           word <- TextGenerator.word
           text <- TextGenerator.textWithoutWord(word)
@@ -65,7 +65,7 @@ class TextProcessorSpec extends WordSpec with GeneratorDrivenPropertyChecks with
         }
       }
 
-      "return false for static text and word" in {
+      "return false (static data)" in {
         val text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n" +
           "Cras rhoncus, magna et hendrerit blandit, diam arcu rhoncus felis, eget molestie ipsum ligula sed \n" +
           "tortor. Mauris sodales metus eu enim imperdiet posuere."

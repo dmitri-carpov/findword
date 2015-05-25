@@ -1,4 +1,4 @@
-package unit.findword.generator
+package generator
 
 import org.scalacheck.Gen
 
@@ -44,18 +44,6 @@ object TextGenerator {
     val wordGen = Gen.frequency((2, aWord), (15, word))
     buildText(wordGen, _.contains(aWord))
   }
-
-  /**
-   * Simplified text generator. Used for more complex generation logic to avoid overhead.
-   *
-   */
-  def simplifiedWithWordText(word: String) = Gen.listOfN(5, Gen.alphaStr).map(_.mkString(s" ${word} "))
-
-  /**
-   * Simplified text generator. Used for more complex generation logic to avoid overhead.
-   *
-   */
-  def simplifiedWithoutWordText(word: String) = Gen.listOfN(5, Gen.alphaStr.suchThat(w => w != word)).map(_.mkString(" "))
 
   /**
    * Build a generator which produces text from the given word generator and which satisfies the given filter.
