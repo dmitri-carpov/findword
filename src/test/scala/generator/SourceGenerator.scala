@@ -1,6 +1,7 @@
 package generator
 
 import org.scalacheck.Gen
+import scala.language.implicitConversions
 
 /**
  * @author Dmitri Carpov
