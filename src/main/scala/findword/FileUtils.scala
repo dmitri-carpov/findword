@@ -21,7 +21,7 @@ object FileUtils {
    *         An empty collection if there is no single file deep in the directory hierarchy or directory does not exists.
    */
   def unfold(root: File): Seq[File] = {
-    if (root.isDirectory) {
+    if (root.isDirectory && root.canRead) {
       val content = root.listFiles()
       val files = content.filter(_.isFile)
       val directories = content.filter(_.isDirectory)
