@@ -9,6 +9,7 @@ object Abstractions {
 
   /**
    * Remove duplicated entries.
+   * Warning: The result collection may have different order.
    *
    * @param seq Collection to process.
    * @param f Function to extract key which defines duplicates.
